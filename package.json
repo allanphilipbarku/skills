@@ -1,6 +1,6 @@
 {
   "name": "@allanphilipbarku/skills",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "private": true,
   "description": "Allan Philip Barku's Claude Code skill collection (flow-audit + setup-flow-audit).",
   "license": "MIT",
