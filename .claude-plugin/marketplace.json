@@ -1,0 +1,20 @@
+{
+  "$schema": "https://json.schemastore.org/claude-code-marketplace.json",
+  "name": "allan-skills",
+  "description": "Allan Philip Barku's personal Claude Code skill collection.",
+  "owner": {
+    "name": "Allan Philip Barku"
+  },
+  "plugins": [
+    {
+      "name": "flow-audit",
+      "description": "Role-cascade browser E2E audit that drives the real UI from the highest role down, creates data through the interface, verifies findings, and files them as issues — plus its one-time per-repo setup. Requires a Playwright MCP and mattpocock/skills.",
+      "version": "0.1.0",
+      "author": {
+        "name": "Allan Philip Barku"
+      },
+      "category": "testing",
+      "source": "./"
+    }
+  ]
+}

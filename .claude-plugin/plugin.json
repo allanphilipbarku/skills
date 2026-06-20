@@ -1,0 +1,10 @@
+{
+  "$schema": "https://json.schemastore.org/claude-code-plugin.json",
+  "name": "flow-audit",
+  "version": "0.1.0",
+  "description": "Role-cascade browser E2E audit (flow-audit) + its per-repo setup (setup-flow-audit). Drives the real UI from the highest role to the lowest, creates data through the interface, verifies findings before filing, and hands them to to-issues/triage. Requires a Playwright MCP and mattpocock/skills.",
+  "author": {
+    "name": "Allan Philip Barku"
+  },
+  "license": "MIT"
+}
