@@ -11,6 +11,11 @@ owns each step — to discover *real* issues, verify them, and file them where t
 subagent contract, and a worked example. Read it before step 3.
 
 ## Guard (setup rule, then run)
+- **No browser MCP connected** (no Playwright `browser_*` tools available) → stop and tell the user
+  to connect one, with the exact command: `/plugin install playwright@claude-plugins-official` (plugin)
+  or `claude mcp add playwright -- npx @playwright/mcp@latest` (standalone), then `npx playwright install
+  chromium`. The skill is just instructions — it can't install the MCP. In a headless / background /
+  cron run, confirm the MCP is loaded in *that* runtime, not just your interactive session.
 - Missing `docs/agents/flow-audit.md` → tell the user to run **`setup-flow-audit`**. Stop.
 - Missing `docs/agents/issue-tracker.md` → run **`setup-matt-pocock-skills`** (or `setup-flow-audit`,
   which triggers it). Stop.

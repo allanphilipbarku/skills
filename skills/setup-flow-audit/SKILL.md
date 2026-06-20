@@ -29,8 +29,11 @@ found, confirm with the user, then write. Don't assume — read what exists.
   an authenticated session loads from.
 - **Test command + DB** — how tests run, and any DB/env override the suite needs.
 - **Roles** — the auth/roles tables, a role enum, or seeders.
-- **Browser tool** — confirm a Playwright (or equivalent) MCP browser is available; flow-audit
-  cannot run without one.
+- **Browser tool** — confirm a Playwright (or equivalent) MCP browser is connected (look for
+  `browser_*` tools); flow-audit cannot run without one. The skill can't install it — if absent,
+  tell the user: `/plugin install playwright@claude-plugins-official` (plugin) **or**
+  `claude mcp add playwright -- npx @playwright/mcp@latest` (standalone), then
+  `npx playwright install chromium`. Record which provider the repo uses in the adapter.
 
 ### 2. Present findings, then ask one section at a time (short explainer each)
 - **Auth / login** — how does a test session start? A local auto-login route, seeded credentials,

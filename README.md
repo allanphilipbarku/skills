@@ -47,8 +47,17 @@ The **skill files are generic and live here**; the **per-repo config lives in ea
 Drop this collection into any project, run the two setups once, and `flow-audit` adapts.
 
 ### Requirements
-- A Playwright (browser) MCP server connected to your agent.
-- `mattpocock/skills` installed (`npx skills@latest add mattpocock/skills`).
+
+These are **separate from the skill** — installing the skill (markdown) does not install them.
+
+1. **Playwright (browser) MCP** connected to your agent. Either:
+   - plugin: `/plugin install playwright@claude-plugins-official`, or
+   - standalone: `claude mcp add playwright -- npx @playwright/mcp@latest`
+
+   then the browser binary once: `npx playwright install chromium`.
+   For headless / background / cron runs, make sure the MCP is loaded in *that* runtime too.
+2. **`mattpocock/skills`** installed: `npx skills@latest add mattpocock/skills` (provides
+   `to-issues` / `triage` and the `setup-matt-pocock-skills` config flow-audit files through).
 
 ## License
 
