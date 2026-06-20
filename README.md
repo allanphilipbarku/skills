@@ -22,7 +22,9 @@ End-to-end audit of a feature flow by **driving the real UI from the highest rol
 lowest**, creating data through the interface (never seeders), discovering bugs / UX / polish gaps,
 **verifying them before filing**, and filing them as issues — then optionally dispatching AFK agents
 to fix, test, and commit. Chronological: the highest role creates the prerequisites the next role
-needs.
+needs. The cascade, verification, and adapter machinery are stack-agnostic; the concrete
+browser-driving tactics are richest for **Laravel + Filament/Livewire** (the stack it's been run
+against). Other stacks fall back to the general tactics plus the per-repo adapter.
 
 ### setup-flow-audit
 One-time per-repo setup for `flow-audit`. Writes `docs/agents/flow-audit.md` (how to serve the app,

@@ -43,7 +43,9 @@ found, confirm with the user, then write. Don't assume — read what exists.
 - **Dependency order** — the chronological chain: which role creates the prerequisites the next
   role needs (e.g. admin opens a call → applicant applies → reviewer reviews → admin awards).
 - **Data rule** — confirm "create everything through the UI, never the seeder" (or the repo's
-  equivalent constraint).
+  equivalent constraint). Also capture **which DB the audit writes to and how it resets**: the audit
+  creates real records and never tears them down, so it must target a disposable dev DB, never
+  staging/prod. Record the reset command in the adapter.
 
 ### 3. Write `docs/agents/flow-audit.md`
 Use [flow-audit-adapter.md](./flow-audit-adapter.md) as the template. Fill every field; leave a

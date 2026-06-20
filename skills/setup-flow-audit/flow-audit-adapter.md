@@ -32,6 +32,9 @@ flow-audit reads it to know how to drive THIS app. Edit it directly whenever the
 ## Data rule
 - <e.g. Create all data through the UI. NEVER run the scenario/demo seeder. Using an existing
   account to log in is fine; the data under test must be created by hand through the interface.>
+- **Disposability**: <which DB the audit writes to, and how it gets reset — e.g. a local/dev DB that
+  is safe to dirty and reset with `php artisan migrate:fresh --seed`. The audit creates real records
+  and does NOT tear them down, so point it at a disposable DB, never staging/prod.>
 
 ## Tests
 - Command: <e.g. `DB_DATABASE=app_db php artisan test --compact tests/Feature/<area>`>

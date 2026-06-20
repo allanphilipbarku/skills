@@ -1,6 +1,6 @@
 ---
 name: flow-audit
-description: End-to-end audit of a feature flow by driving the real UI from the highest role down to the lowest, creating data through the interface (never seeders), discovering bugs / UX / polish gaps, verifying them, and filing them as issues. Optionally dispatches AFK agents to fix, test, and commit. Use when the user wants an e2e flow check, a role-by-role walkthrough, to find issues by actually using a feature, or a chronological audit from the highest role to the lowest. Requires a Playwright (browser) MCP plus the setup-flow-audit and matt-pocock config.
+description: End-to-end audit of a feature flow by driving the real UI from the highest role down to the lowest, creating data through the interface (never seeders), discovering bugs / UX / polish gaps, verifying them, and filing them as issues. Optionally dispatches AFK agents to fix, test, and commit. Use when the user wants an e2e flow check, a role-by-role walkthrough, to find issues by actually using a feature, or a chronological audit from the highest role to the lowest. The cascade structure is stack-agnostic, but the concrete browser-driving tactics are richest for Laravel + Filament/Livewire; other stacks fall back to the general tactics plus the per-repo adapter. Requires a Playwright (browser) MCP plus the setup-flow-audit and matt-pocock config.
 ---
 
 # Flow audit
@@ -19,6 +19,10 @@ subagent contract, and a worked example. Read it before step 3.
 - Missing `docs/agents/flow-audit.md` → tell the user to run **`setup-flow-audit`**. Stop.
 - Missing `docs/agents/issue-tracker.md` → run **`setup-matt-pocock-skills`** (or `setup-flow-audit`,
   which triggers it). Stop.
+- **`to-issues` / `triage` not installed** (the handoff skills from `mattpocock/skills`, separate
+  from their config above) → step 5 has nothing to hand off to. Confirm both are available *before*
+  the walk, not after. If absent: `npx skills@latest add mattpocock/skills`. Stop. (Fail here, cheaply
+  — not after a full browser cascade has already run.)
 
 Read both adapters before doing anything.
 
@@ -31,7 +35,8 @@ feature / scope with the user.
 
 ### 2. Prepare access
 Apply the adapter's **test-only access gates** (env setup — record them as such, never as bugs).
-Resolve the base URL and the per-role accounts.
+Resolve the base URL and the per-role accounts. Confirm the target is the adapter's **disposable
+DB** — the cascade creates real records and never tears them down; refuse to run against staging/prod.
 
 ### 3. Walk the cascade — one role-phase at a time, in dependency order
 Dispatch **one subagent per role-phase** (keeps the orchestrator's context lean). Each subagent

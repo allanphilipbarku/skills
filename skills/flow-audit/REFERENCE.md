@@ -52,7 +52,11 @@ General:
 - Read **console errors** and **network requests** — a recurring error often unmasks a real bug
   (or reveals it's just a benign 404). Distinguish a 200 Livewire/XHR from one returning HTML.
 
-Framework-specific (extend per adapter):
+Framework-specific (extend per adapter) — the tactics below are **Laravel + Filament/Livewire**,
+the stack this skill has actually been driven against. On any other stack (React/Next, Rails, etc.)
+use the *General* tactics above plus your adapter, and treat these as a pattern to mirror, not to
+copy. Don't invent stack-specific advice you haven't verified in a real run — guessed tactics are
+exactly the kind of plausible-but-wrong the discrimination step exists to catch.
 - **Filament / Livewire**: layout components live in `Filament\Schemas\Components\`; row actions are
   `->recordActions()`; date-time pickers render a **readonly** display input (you can't type — drive
   the calendar, or set state via the page's Livewire component). To set form state directly, find the
