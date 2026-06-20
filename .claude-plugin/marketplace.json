@@ -1,5 +1,5 @@
 {
-  "$schema": "https://json.schemastore.org/claude-code-marketplace.json",
+  "$schema": "https://anthropic.com/claude-code/marketplace.schema.json",
   "name": "allan-skills",
   "description": "Allan Philip Barku's personal Claude Code skill collection.",
   "owner": {
@@ -14,7 +14,7 @@
         "name": "Allan Philip Barku"
       },
       "category": "testing",
-      "source": "./"
+      "source": "."
     }
   ]
 }
